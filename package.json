@@ -1,0 +1,25 @@
+{
+	"name": "gh-issuectl",
+	"version": "0.1.0",
+	"type": "module",
+	"description": "GitHub CLI extension to patch Issue/PR description sections",
+	"bin": {
+		"gh-issuectl": "./dist/index.ts"
+	},
+	"scripts": {
+		"build": "bun build ./src/index.ts --outdir ./dist --target node",
+		"test": "bun test",
+		"typecheck": "tsc --noEmit",
+		"lint": "biome check .",
+		"format": "biome format . --write"
+	},
+	"dependencies": {
+		"yargs": "^17.7.2"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.4",
+		"@types/bun": "latest",
+		"@types/yargs": "^17.0.32",
+		"typescript": "^5.7.3"
+	}
+}
