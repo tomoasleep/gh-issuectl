@@ -1,3 +1,4 @@
 #!/bin/bash
 set -e
-exec bun ./dist/index.js "$@"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+exec bun "$SCRIPT_DIR/dist/index.js" "$@"
