@@ -127,4 +127,42 @@ Content.`;
 			SectionNotFoundError,
 		);
 	});
+
+	describe("allowCreate", () => {
+		it("should create new section at end when section does not exist", () => {
+			const body = `## What
+
+Some content.`;
+
+			const result = patchSection(body, "Why", "New section content.", true);
+
+			expect(result).toBe(`## What
+
+Some content.
+
+## Why
+
+New section content.`);
+		});
+
+		it("should patch existing section normally when allowCreate is true", () => {
+			const body = `## What
+
+Old content.
+
+## Why
+
+Reason.`;
+
+			const result = patchSection(body, "Why", "Updated reason.", true);
+
+			expect(result).toBe(`## What
+
+Old content.
+
+## Why
+
+Updated reason.`);
+		});
+	});
 });

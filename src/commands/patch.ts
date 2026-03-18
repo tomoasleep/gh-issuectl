@@ -93,6 +93,7 @@ export async function patch(
 	number?: number,
 	section?: string,
 	content?: string,
+	append?: boolean,
 ): Promise<void> {
 	if (!section) {
 		console.error("Error: Section is required");
@@ -131,7 +132,7 @@ export async function patch(
 			process.exit(1);
 		}
 
-		const newBody = patchSection(item.body, section, content);
+		const newBody = patchSection(item.body, section, content, append);
 		await updateItem(item.type, targetNumber, newBody);
 
 		console.log(

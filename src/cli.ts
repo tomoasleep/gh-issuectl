@@ -24,10 +24,16 @@ export async function run(args: string[]): Promise<void> {
 						"New content for the section (reads from stdin if not provided)",
 					type: "string",
 				},
+				append: {
+					alias: "a",
+					describe: "Append section to end if it doesn't exist",
+					type: "boolean",
+					default: false,
+				},
 			},
 			async (argv) => {
 				const { patch } = await import("./commands/patch.js");
-				await patch(argv.number, argv.section, argv.content);
+				await patch(argv.number, argv.section, argv.content, argv.append);
 			},
 		)
 		.demandCommand(1)
